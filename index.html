@@ -1,128 +1,14 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Sepideh</title>
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            direction: rtl;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 1.5em;
-            color: #212529;
-            margin-bottom: 30px;
-        }
-
-        .player {
-            width: 320px;
-            background: #e9ecef;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .progress-bar {
-            flex: 1;
-            height: 6px;
-            background: #ccc;
-            border-radius: 3px;
-            margin: 0 10px;
-            position: relative;
-        }
-
-        .progress {
-            height: 100%;
-            background: #555;
-            width: 0;
-            border-radius: 3px;
-        }
-
-        button {
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .time {
-            font-size: 0.8em;
-            color: #333;
-            margin-top: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Sepideh</title>
 </head>
-<body>
-    <h1>تولدت مبارک نور چشمی ما</h1>
-
-    <div class="player">
-        <div class="controls">
-            <button id="playPause">▶️</button>
-            <div class="progress-bar" id="progressBar">
-                <div class="progress" id="progress"></div>
-            </div>
-        </div>
-        <div class="time">
-            <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-        </div>
-        <audio id="audio" src="Sepideh.mp3"></audio>
-    </div>
-
-    <script>
-        const audio = document.getElementById('audio');
-        const playPause = document.getElementById('playPause');
-        const currentTimeEl = document.getElementById('currentTime');
-        const durationEl = document.getElementById('duration');
-        const progress = document.getElementById('progress');
-        const progressBar = document.getElementById('progressBar');
-
-        playPause.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playPause.textContent = '⏸️';
-            } else {
-                audio.pause();
-                playPause.textContent = '▶️';
-            }
-        });
-
-        audio.addEventListener('loadedmetadata', () => {
-            durationEl.textContent = formatTime(audio.duration);
-        });
-
-        audio.addEventListener('timeupdate', () => {
-            currentTimeEl.textContent = formatTime(audio.currentTime);
-            const percent = (audio.currentTime / audio.duration) * 100;
-            progress.style.width = percent + '%';
-        });
-
-        progressBar.addEventListener('click', (e) => {
-            const rect = progressBar.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const percent = x / progressBar.offsetWidth;
-            audio.currentTime = percent * audio.duration;
-        });
-
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
-            return ${minutes}:${secs};
-        }
-    </script>
+<body style="text-align:center; padding-top:50px; background-color:#f2f2f2; font-family:sans-serif; direction:rtl;">
+  <h2>تولدت مبارک نور چشمی ما</h2>
+  <audio controls style="width:80%; max-width:600px;">
+    <source src="Sepideh.mp3" type="audio/mpeg">
+    مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+  </audio>
 </body>
 </html>
